@@ -13,7 +13,7 @@
 
 // code example for Window Binding
 function globalFunction() {
-    console.log("***'this' in Global Binding:\n", this);
+    console.log("***'this' in Global Binding refers to the entire Window object:\n", this);
   }
   globalFunction();
   
@@ -24,7 +24,7 @@ const object1 = {
     name: "Ben",
     age: 29,
     likesTo: function(activity) {
-        console.log("***'this' in Implicit Binding:\n", this);
+        console.log("***'this' in Implicit Binding refers to 'object1':\n", this);
         console.log(`Hi! I'm ${this.name}, I'm ${this.age}, and I like to ${activity}.`);
     }
 };
@@ -39,7 +39,7 @@ function Hobbies(person, hobby) {
     this.enjoys = function() {
         console.log(`${this.name} loves to ${this.hobby}.`);
     };
-    console.log("***'this' in New Binding:\n", this);
+    console.log("***'this' in New Binding refers to each new 'Hobbies' object:\n", this);
 }
 const james = new Hobbies("James", "skate");
 const lisa = new Hobbies("Lisa", "play soccer");
@@ -52,8 +52,8 @@ chuan.enjoys();
 // Principle 4
 
 // code example for Explicit Binding
-console.log("***'this' in Explicit Binding:\n");
-console.log("lisa.enjoys() using .call(james)");
+console.log("*** In Explicit Binding, the objects' names are used explicitly before the dot:\n");
+console.log("*** lisa.enjoys() is invoked using .call(james)");
     lisa.enjoys.call(james);
-console.log("chuan.enjoys() using .apply(lisa)");
+console.log("*** chuan.enjoys() is invoked using .apply(lisa)");
     chuan.enjoys.apply(lisa);
